@@ -1,0 +1,53 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qtquickcontrols2.conf</file>
+        <file>view/AppWindow.qml</file>
+        <file>view/PageRoot.qml</file>
+        <file>view/PageRootForm.ui.qml</file>
+        <file>view/Style.qml</file>
+        <file>view/pages/ClientCpuPage.qml</file>
+        <file>view/pages/ClientOverviewPage.qml</file>
+        <file>view/pages/ClientOverviewPageForm.ui.qml</file>
+        <file>view/pages/MainPage.qml</file>
+        <file>view/pages/MainPageForm.ui.qml</file>
+        <file>view/components/Utils.js</file>
+        <file>view/pages/ClientConfigPage.qml</file>
+        <file>view/pages/ClientConfigPageForm.ui.qml</file>
+        <file>view/components/charts/NetworkLoadChart.qml</file>
+    </qresource>
+    <qresource prefix="/resources">
+        <file>resources/home_icon.png</file>
+        <file>resources/settings_icon.png</file>
+        <file>resources/sort-down.png</file>
+        <file>resources/sort-up.png</file>
+        <file>resources/plus_icon_white.png</file>
+        <file>resources/ELTE_logo.png</file>
+        <file>resources/kb_logo.png</file>
+        <file>resources/delete_x.png</file>
+        <file>resources/disconnect.png</file>
+    </qresource>
+    <qresource prefix="/components">
+        <file>view/components/tables/ProcessTable.qml</file>
+        <file>view/components/tables/ProcessTableForm.ui.qml</file>
+        <file>view/components/general/ClientConfigField.qml</file>
+        <file>view/components/general/ClientConfigList.qml</file>
+        <file>view/components/general/ClientConfigListForm.ui.qml</file>
+        <file>view/components/general/ClientDescriptor.qml</file>
+        <file>view/components/general/ClientDescriptorForm.ui.qml</file>
+        <file>view/components/general/ClientSideBar.qml</file>
+        <file>view/components/general/ClientSideBarForm.ui.qml</file>
+        <file>view/components/general/ClientSideBarItem.qml</file>
+        <file>view/components/general/ClientSideBarItemForm.ui.qml</file>
+        <file>view/components/general/Desktop.qml</file>
+        <file>view/components/gauges/CircularGauge.qml</file>
+        <file>view/components/gauges/CircularGauge.qrc</file>
+        <file>view/components/gauges/CircularTickmarkLabel.qml</file>
+        <file>view/components/gauges/CpuGauge.qml</file>
+        <file>view/components/gauges/DiskGauge.qml</file>
+        <file>view/components/gauges/GaugeStyle.qml</file>
+        <file>view/components/gauges/MemoryGauge.qml</file>
+        <file>view/components/charts/CpuChart.qml</file>
+        <file>view/components/charts/LinearChartForm.ui.qml</file>
+        <file>view/components/Utils.js</file>
+    </qresource>
+</RCC>

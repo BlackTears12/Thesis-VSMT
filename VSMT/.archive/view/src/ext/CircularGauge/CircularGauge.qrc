@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>CircularGauge.qml</file>
+        <file>CircularTickmarkLabel.qml</file>
+        <file>Utils.js</file>
+        <file>CpuGauge.qml</file>
+        <file>MemoryGauge.qml</file>
+        <file>GaugeStyle.qml</file>
+    </qresource>
+</RCC>
