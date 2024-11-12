@@ -1,9 +1,0 @@
-/home/ext-szombatb/thesis/VSMT/src/host/build/Desktop-Debug/CMakeFiles/VSMT_Host.dir
-/home/ext-szombatb/thesis/VSMT/src/host/build/Desktop-Debug/CMakeFiles/edit_cache.dir
-/home/ext-szombatb/thesis/VSMT/src/host/build/Desktop-Debug/CMakeFiles/rebuild_cache.dir
-/home/ext-szombatb/thesis/VSMT/src/host/build/Desktop-Debug/CMakeFiles/list_install_components.dir
-/home/ext-szombatb/thesis/VSMT/src/host/build/Desktop-Debug/CMakeFiles/install.dir
-/home/ext-szombatb/thesis/VSMT/src/host/build/Desktop-Debug/CMakeFiles/install/local.dir
-/home/ext-szombatb/thesis/VSMT/src/host/build/Desktop-Debug/CMakeFiles/install/strip.dir
-/home/ext-szombatb/thesis/VSMT/src/host/build/Desktop-Debug/CMakeFiles/VSMT_Host_autogen_timestamp_deps.dir
-/home/ext-szombatb/thesis/VSMT/src/host/build/Desktop-Debug/CMakeFiles/VSMT_Host_autogen.dir
