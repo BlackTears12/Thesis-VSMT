@@ -24,9 +24,9 @@ QVariant StorageDataModel::data(const QModelIndex &index, int role) const
     case Roles::DeviceRole:
         return info.device;
     case Roles::TotalBytesRole:
-        return info.bytesTotal;
+        return info.mbytesTotal;
     case Roles::FreeBytesRole:
-        return info.bytesFree;
+        return info.mbytesFree;
     case Roles::UsedPercentRole:
         return info.usedPerced();
     }
@@ -65,10 +65,7 @@ void StorageDataModel::setContext(common::client_id id)
 
 void StorageDataModel::refreshView()
 {
-    beginRemoveRows(QModelIndex(), 0, rowCount()-1);
-    endRemoveRows();
-    beginInsertRows(QModelIndex(), 0, rowCount()-1);
-    endInsertRows();
+    emit dataChanged(index(0),index(rowCount()-1));
 }
 
 StorageDataModel::StorageDataModel(QObject *parent) : QAbstractListModel{parent} {}

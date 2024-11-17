@@ -31,8 +31,8 @@ QDataStream &operator>>(QDataStream &stream,StorageInfo &metric)
     stream >> metric.name;
     stream >> metric.fileSystemType;
     stream >> metric.device;
-    stream >> metric.bytesTotal;
-    stream >> metric.bytesFree;
+    stream >> metric.mbytesTotal;
+    stream >> metric.mbytesFree;
     return stream;
 }
 
@@ -105,8 +105,8 @@ QDataStream &operator<<(QDataStream &stream,const StorageInfo &metric)
     stream << metric.name;
     stream << metric.fileSystemType;
     stream << metric.device;
-    stream << metric.bytesTotal;
-    stream << metric.bytesFree;
+    stream << metric.mbytesTotal;
+    stream << metric.mbytesFree;
     return stream;
 }
 

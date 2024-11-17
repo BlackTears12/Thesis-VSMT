@@ -43,7 +43,8 @@ Rectangle {
         anchors.horizontalCenter: parent.horizontalCenter
         width: parent.width
         height: 50
-        color: "#1e1e1e"
+        //color: "#1e1e1e"
+        color: "transparent"
         Text {
             anchors.fill: parent
             color: "#ffffff"
@@ -61,6 +62,7 @@ Rectangle {
         anchors.topMargin: 10
         width: parent.width * 0.8
         height: (parent.height - storageHeader.height - anchors.topMargin)
+        spacing: 5
         delegate: Rectangle {
             id: descriptor
             required property string name
@@ -72,6 +74,10 @@ Rectangle {
             width: parent.width * 0.7
             anchors.horizontalCenter: parent.horizontalCenter
             radius: 100
+            height: nameRect.height + progressContainer.height +
+                    infoCol.height + infoCol.anchors.topMargin +
+                    endSeparator.height + endSeparator.anchors.topMargin
+            color: "transparent"
 
             Rectangle {
                 id: nameRect
@@ -111,18 +117,19 @@ Rectangle {
                         id: usedtext
                         color: "#ffffff"
                         font.pointSize: 16
-                        text: "Used: " + (bytesTotal - bytesFree) + "Kb"
+                        text: "Used: " + (bytesTotal - bytesFree) + "Mb"
                     }
 
                     Text {
                         id: totalText
                         color: "#ffffff"
                         font.pointSize: 16
-                        text: "Total: " + bytesTotal + "Kb"
+                        text: "Total: " + bytesTotal + "Mb"
                     }
                 }
             }
             Column {
+                id: infoCol
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.top: progressContainer.bottom
                 anchors.topMargin: usageContaniner.height + usageContaniner.anchors.topMargin + 20
@@ -137,6 +144,15 @@ Rectangle {
                     text: "Name: " + name
                     font.pointSize: 15
                 }
+            }
+            Rectangle {
+                id: endSeparator
+                width: parent.width * 0.7
+                height: 3
+                color: "white"
+                anchors.top: infoCol.bottom
+                anchors.topMargin: 6
+                anchors.horizontalCenter: parent.horizontalCenter
             }
         }
 

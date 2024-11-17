@@ -67,20 +67,20 @@ struct MemoryInfo
 /* Info on a disk device */
 struct StorageInfo
 {
-    StorageInfo(QString nm,QString fileFs,QString dev,qint64 btotal,qint64 bfree):
-        name(nm),fileSystemType(fileFs),device(dev),bytesTotal(btotal),bytesFree(bfree){}
+    StorageInfo(QString nm,QString fileFs,QString dev,qint64 mbtotal,qint64 mbfree):
+        name(nm),fileSystemType(fileFs),device(dev),mbytesTotal(mbtotal),mbytesFree(mbfree){}
 
     StorageInfo(const StorageInfo&) = default;
     StorageInfo() = default;
 
-    constexpr double usedPerced() const { return util::percentof(bytesUsed(),bytesTotal); }
-    constexpr qint64 bytesUsed() const { return bytesTotal - bytesFree; }
+    constexpr double usedPerced() const { return util::percentof(mbytesUsed(),mbytesTotal); }
+    constexpr qint64 mbytesUsed() const { return mbytesTotal - mbytesFree; }
 
     QString name;
     QString fileSystemType;
     QString device;
-    qint64 bytesTotal;
-    qint64 bytesFree;
+    qint64 mbytesTotal;
+    qint64 mbytesFree;
 };
 
 /* Info on a single process */
@@ -166,13 +166,13 @@ public:
     double overallCpuLoad() const { return util::average(coreLoads); }
     double overallStorageLoad() const
     {
-        qint64 allBytes = 0;
-        qint64 usedBytes = 0;
+        qint64 allMBytes = 0;
+        qint64 usedMBytes = 0;
         for(const auto &e : storageInfo) {
-            allBytes += e.bytesTotal;
-            usedBytes += e.bytesUsed();
+            allMBytes += e.mbytesTotal;
+            usedMBytes += e.mbytesUsed();
         }
-        return util::percentof(usedBytes,allBytes);
+        return util::percentof(usedMBytes,allMBytes);
     }
 
     MemoryInfo memory;

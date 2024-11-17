@@ -208,14 +208,14 @@ vector<StorageInfo> ResourceMonitor<Platform::Linux>::gatherStorageInfo() const
     vector<StorageInfo> infos;
     auto mountedVolumes = QStorageInfo::mountedVolumes();
     for(const auto &storage : mountedVolumes) {
-        if(!storage.isRoot() || !storage.isReady() || storage.isReadOnly())
+        if(!storage.isValid() || !storage.isReady() || storage.isReadOnly())
             continue;
         infos.push_back(StorageInfo {
             storage.displayName(),
             storage.fileSystemType(),
             storage.device(),
-            util::byteToKb(storage.bytesTotal()),
-            util::byteToKb(storage.bytesAvailable())
+            util::byteToMb(storage.bytesTotal()),
+            util::byteToMb(storage.bytesAvailable())
         });
     }
     return infos;

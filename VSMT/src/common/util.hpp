@@ -18,6 +18,6 @@ inline constexpr double normalizeFloat(const double v) { return ((int)(v*100) / 
 
 inline constexpr double percentof(const uint64_t &nom,const uint64_t denom) { return normalizeFloat(((double)nom/denom)*100); }
 
-inline constexpr uint64_t byteToKb(const uint64_t &bytes) { return bytes/(1024*1024); }
+inline constexpr uint64_t byteToMb(const uint64_t &bytes) { return bytes/(1024*1024); }
 
 }

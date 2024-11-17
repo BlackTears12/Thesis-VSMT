@@ -27,42 +27,51 @@ Rectangle {
     property alias cidField: cidField
     property alias portField: portField
 
-    width: 300
-    height: 500
+    width: 350
+    height: 400
 
     //color: Style.backgroundColor
     color: "#252d50"
-    Label {
-        id: nameLabel
-        width: parent.width
-        height: 20
-        text: configModel.name
-        anchors.top: parent.top
-        anchors.topMargin: 10
-        horizontalAlignment: Text.AlignHCenter
-        anchors.horizontalCenter: parent.horizontalCenter
-    }
-
     Rectangle {
-        id: divider
+        id: nameLableContainer
         width: parent.width
-        height: 10
-        color: "#424242"
-        anchors.top: nameLabel.bottom
-        anchors.topMargin: 15
-        radius: 100
+        height: 40
+        anchors.top: parent.top
+        anchors.horizontalCenter: parent.horizontalCenter
+        color: "grey"
+        Label {
+            id: nameLabel
+            height: 20
+            width: parent.width
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.horizontalCenter: parent.horizontalCenter
+            text: configModel.name
+            font.pointSize: 18
+            horizontalAlignment: Text.AlignHCenter
+        }
     }
 
     ColumnLayout {
         width: parent.width
-        anchors.top: divider.bottom
-        anchors.topMargin: 10
+        anchors.top: nameLableContainer.bottom
         spacing: 10
+
+        Rectangle {
+            height: 3
+            width: parent.width
+            color: "grey"
+        }
 
         ClientConfigField {
             id: nameField
             fieldName: "Name"
             fieldValue: name
+        }
+
+        Rectangle {
+            height: 3
+            width: parent.width
+            color: "grey"
         }
 
         ClientConfigField {
@@ -71,10 +80,22 @@ Rectangle {
             fieldValue: cid
         }
 
+        Rectangle {
+            height: 3
+            width: parent.width
+            color: "grey"
+        }
+
         ClientConfigField {
             id: portField
             fieldName: "Port"
             fieldValue: port
+        }
+
+        Rectangle {
+            height: 3
+            width: parent.width
+            color: "grey"
         }
     }
 

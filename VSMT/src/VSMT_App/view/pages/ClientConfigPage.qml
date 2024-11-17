@@ -8,6 +8,12 @@ Window {
 
     width: form.width
     height: form.height
+    maximumHeight: height
+    minimumHeight: height
+    maximumWidth: width
+    minimumWidth: width
+
+    title: "Configure client"
 
     Component.onCompleted: {
         form.saveConfig.connect(ClientConfigListModel.saveConfigClicked)

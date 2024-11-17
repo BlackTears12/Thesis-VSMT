@@ -1,8 +1,6 @@
 #include "vsocket.hpp"
 #include "util.hpp"
-#include <linux/virtio_vsock.h>
-#include <sys/socket.h>
-#include <linux/vm_sockets.h>
+#include "vsock_headers.hpp"
 #include <unistd.h>
 #include <arpa/inet.h>
 #include <QDebug>

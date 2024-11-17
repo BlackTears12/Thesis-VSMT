@@ -27,9 +27,9 @@ set(COMMON_SRC
     ${COMMON_LIB_PATH}/metricserializer.cpp
     ${COMMON_LIB_PATH}/resourcemonitor.hpp
     ${COMMON_LIB_PATH}/resourcemonitor_interface.hpp
-    ${COMMON_LIB_PATH}/resourcemonitor_qnx.cpp
     ${COMMON_LIB_PATH}/vsockmessage.hpp
     ${COMMON_LIB_PATH}/vsockmessage.cpp
+    ${COMMON_LIB_PATH}/vsock_headers.hpp
     ${COMMON_LIB_PATH}/clientconfiguration.hpp
 
     ${COMMON_LIB_PATH}/linux/resourcemonitor_linux.cpp
@@ -38,8 +38,10 @@ set(COMMON_SRC
     ${COMMON_LIB_PATH}/linux/sysfileparser.cpp
     ${COMMON_LIB_PATH}/linux/commandutil.cpp
     ${COMMON_LIB_PATH}/linux/commandutil.hpp
-)
 
+    ${COMMON_LIB_PATH}/qnx/resourcemonitor_qnx.hpp
+    ${COMMON_LIB_PATH}/qnx/resourcemonitor_qnx.cpp
+)
 include_directories(
     controller
     datamodels
@@ -114,7 +116,6 @@ qt_add_executable(VSMT
     core/application.hpp
     core/application.cpp
     core/qmlsingleton.hpp
-
 
     ${SINGLETON_SRC_FILES}
     ${COMMON_SRC}
