@@ -1,4 +1,4 @@
-<mxfile host="Electron" modified="2024-10-13T15:04:09.366Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/23.0.2 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="636gILNYaBDyVfONCCka" version="23.0.2" type="device" pages="11">
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0" version="24.7.17" pages="12">
   <diagram name="Use-case" id="e56a1550-8fbb-45ad-956c-1786394a9013">
     <mxGraphModel dx="1434" dy="880" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="none" math="0" shadow="0">
       <root>
@@ -1979,6 +1979,41 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="MrfnEbRfG3WTvia22bkS" name="Page-12">
+    <mxGraphModel dx="868" dy="553" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2339" pageHeight="3300" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="0Q9B6U-qZB7gi46gYB2J-1" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="245" y="320" width="440" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="0Q9B6U-qZB7gi46gYB2J-2" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="235" y="370" width="460" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="0Q9B6U-qZB7gi46gYB2J-3" value="KVM" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="260" y="260" width="410" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="0Q9B6U-qZB7gi46gYB2J-4" value="AGL" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="350" y="140" width="250" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="0Q9B6U-qZB7gi46gYB2J-5" value="QNX" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="530" y="30" width="70" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="0Q9B6U-qZB7gi46gYB2J-6" value="AGL" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="460" y="30" width="70" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="0Q9B6U-qZB7gi46gYB2J-7" value="VSMT App" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="350" y="120" width="110" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="0Q9B6U-qZB7gi46gYB2J-9" value="VSMT Client" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="530" y="10" width="70" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="0Q9B6U-qZB7gi46gYB2J-10" value="VSMT Client" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="460" y="10" width="70" height="20" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
