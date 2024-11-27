@@ -1,0 +1,10 @@
+qemu-system-aarch64 -cpu cortex-a57 -machine virt -nographic \
+      -serial mon:stdio -serial null \
+      -m 2048 -monitor none -smp 4 -soundhw hda -device usb-ehci \
+      -netdev user,id=net0,dhcpstart=10.0.2.30 -device virtio-net-pci,netdev=net0 \
+      -device virtio-rng-pci \
+      -device qemu-xhci -device usb-tablet -device usb-kbd \
+      -kernel tmp/deploy/images/h3ulcb/Image -append "console=ttyAMA0,115200 root=/dev/vda verbose systemd.log_color=false " \
+      -drive format=raw,file=tmp/deploy/images/h3ulcb/agl-image-minimal-h3ulcb-kf.ext4  \
+      -device vhost-vsock-pci,guest-cid=3
+
