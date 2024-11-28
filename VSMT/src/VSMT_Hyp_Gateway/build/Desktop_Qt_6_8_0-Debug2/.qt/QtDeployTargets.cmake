@@ -1,0 +1,2 @@
+set(__QT_DEPLOY_TARGET_VSMT_Hyp_Gateway_FILE /home/ext-szombatb/thesis/VSMT/src/VSMT_Hyp_Gateway/build/Desktop_Qt_6_8_0-Debug2/VSMT_Hyp_Gateway)
+set(__QT_DEPLOY_TARGET_VSMT_Hyp_Gateway_TYPE EXECUTABLE)
