@@ -1,0 +1,38 @@
+@startuml
+
+enum ConnectionStatus::Status {
+    Idle
+    Alive
+    TimedOut
+    Refused
+}
+
+class ConnectionStatus {
+    + QString message
+}
+
+class Connection {
+    + shared_ptr<ClientDispatcher> dispatcher
+    + shared_ptr<SystemInfo> systemInfo
+}
+
+class ClientConnector {
+    + ClientConnector(milliseconds timeout = milliseconds(100), QObject *parent = nullptr)
+    + void attemptRemoteConnection(const ClientConfiguration&)
+    + void attemptLocalConnection(const ClientConfiguration&)
+    + signal void clientConnected(ConnectionStatus, Connection)
+    + signal void clientTimedOut(ConnectionStatus, common::client_id)
+    - void addConnectingDispatcher(const shared_ptr<ClientDispatcher>)
+    - void resolveClients()
+    - void onClientConnected(client_id, shared_ptr<SystemInfo>)
+    - std::map<common::client_id, shared_ptr<ClientDispatcher>> unresolvedClients
+    - QTimer clientResolveTimer
+    - QMutex unresolvedClientsLock
+}
+
+QObject <|-- ClientConnector
+ClientConnector -- Connection
+ClientConnector -- ConnectionStatus
+ConnectionStatus *-- ConnectionStatus::Status: "+ status"
+
+@enduml

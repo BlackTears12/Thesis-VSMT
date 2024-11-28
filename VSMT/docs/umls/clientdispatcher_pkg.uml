@@ -1,0 +1,48 @@
+@startuml
+
+class LocalClientDispatcher {
+    + LocalClientDispatcher(const ClientConfiguration&, milliseconds, QObject*)
+    + ~LocalClientDispatcher() override
+    + slot void finalizeDispatcher()
+    + slot void onMetricDue()
+    - milliseconds metricInterval
+    - QTimer intervalTimer
+}
+
+class RemoteClientDispatcher {
+    + RemoteClientDispatcher(const ClientConfiguration&, seconds, QObject*)
+    + ~RemoteClientDispatcher() override
+    - slot void onMetricReceived(metrics::Metric)
+    - QTimer timeoutTmr
+}
+
+together {
+    class RemoteClientDispatcher
+    class ClientDispatcher
+}
+
+abstract class ClientDispatcher {
+    + ClientDispatcher(const ClientConfiguration&, QObject*)
+    + virtual ~ClientDispatcher() = 0
+    + client_id getId() const
+    + QString getName() const
+    + signal void runtimeMetricReceived(shared_ptr<RuntimeMetric>)
+    + signal void clientConnected(client_id, shared_ptr<SystemInfo>)
+    + signal void clientTimedOut()
+    ~ const ClientConfiguration config
+}
+
+skinparam groupInheritance 2
+
+QObject <|-- ClientDispatcher
+
+ClientDispatcher *-- ClientConfiguration: "~config"
+ClientDispatcher <|-- LocalClientDispatcher
+ClientDispatcher <|-- RemoteClientDispatcher
+
+RemoteClientDispatcher *-- VSockClient :  "-client"
+
+LocalClientDispatcher *-- ResourceMonitor : "-resourceMonitor"
+
+
+@enduml

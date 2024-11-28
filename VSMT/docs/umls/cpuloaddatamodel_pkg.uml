@@ -1,0 +1,40 @@
+@startuml
+
+class CoreLoadDataModel {
+    + CoreLoadDataModel(GraphData&, QObject*)
+}
+
+enum CoreLoadDataModelProvider::Roles { 
+    DataModelRole
+    CoreIndexRole 
+}
+
+class CoreLoadDataModelProvider {
+    + ~CoreLoadDataModelProvider()
+    + int rowCount(const QModelIndex &parent = QModelIndex()) const
+    + QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const
+    + QHash<int, QByteArray> roleNames() const
+    + void setDataProviders(QVector<GraphData*> &dataproviders)
+}
+
+class CpuLoadData {
+    + CpuLoadData(size_t size)
+    + CpuLoadData()
+    + ~CpuLoadData()
+    - QVector<LinearGraphDataModel::GraphData*> coreLoads
+    - LinearGraphDataModel::GraphData overallLoad
+}
+
+class CpuLoadDataModel {
+    + void updateLoads(client_id id, double overallLoad, const vector<double> &coreLoads)
+    + void setContext(client_id id)+ ~ClientConfigListModel()
+    + void append(client_id id, size_t coreSize)
+    + void remove(client_id id)
+    - client_id context
+}
+
+LinearGraphDataModel <|-- CoreLoadDataModel
+CoreLoadDataModelProvider *-- "*" CoreLoadDataModel : -models
+CpuLoadDataModel *-- "*" CpuLoadData : -loadData
+
+@enduml

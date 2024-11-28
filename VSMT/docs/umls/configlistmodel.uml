@@ -1,0 +1,36 @@
+@startuml
+
+class ClientConfigListModel {
+    + ~ClientConfigListModel()
+    + ClientConfigModel* context()
+    + int rowCount(const QModelIndex &parent) const
+    + QVariant data(const QModelIndex&, int role) const
+    + ClientConfiguration const* searchForClientConfig(client_id)
+    + void updateConfig(const ClientConfiguration&)
+    + void notifyClientStatusChanged(ConnectionStatus, client_id)
+    + void deleteConfig(client_id)
+    + signal void newConfigClicked()
+    + signal void configEditClicked(client_id)
+    + signal void configConnectClicked(client_id)
+    + signal void deleteConfigClicked(client_id)
+    + signal void saveConfigClicked(QString newName, QString newCid, QString newPort)
+    + signal void revertConfigClicked()
+    ~ ClientConfigListModel()
+    - void updateContext(client_id)
+    - QHash<int, QByteArray> roleNames() const
+    - client_id availableId() const
+    - void saveConfigs()
+    - void loadSavedConfigs()
+    - slot void onNewConfigClicked()
+    - slot void onConfigEditClicked(client_id)
+    - slot void onSaveConfigClicked(QString newName, QString newCid, QString newPort)
+    - slot void onRevertConfigClicked()
+}
+
+ClientConfigListModel *-- ClientConfigModel : -contextModel
+ClientConfigListModel *-- "*" ClientConfiguration : -configs
+ClientConfigListModel -- ConnectionStatus
+QmlSingleton <|-- ClientConfigListModel
+QAbstactListModel <|-- ClientConfigListModel
+
+@enduml

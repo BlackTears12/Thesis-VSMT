@@ -1,0 +1,109 @@
+@startuml
+
+class CpuInfo {
+    + QString model
+    + QString speed
+    + uint8_t cores
+    + CpuInfo(QString, uint8_t, QString)
+    + CpuInfo(const CpuInfo&)
+    + CpuInfo()
+}
+
+class SystemInfo {
+    + QString distribution
+    + QString platform
+    + SystemInfo(CpuInfo, QString, QString)
+    + SystemInfo(const SystemInfo&)
+    + SystemInfo()
+}
+
+class MemoryInfo {
+    + uint32_t total
+    + uint32_t used
+    + constexpr double usedPercent() const
+    + MemoryInfo(uint64_t, uint64_t)
+    + MemoryInfo(const MemoryInfo&)
+    + MemoryInfo()
+}
+
+class StorageInfo {
+    + QString name
+    + QString fileSystemType
+    + QString device
+    + qint64 mbytesTotal
+    + qint64 mbytesFree
+    + constexpr double usedPerced() const
+    + constexpr qint64 mbytesUsed() const
+    + StorageInfo(QString, QString, QString, qint64, qint64)
+    + StorageInfo(const StorageInfo&)
+    + StorageInfo()
+}
+
+class ProcessInfo {
+    + pid_t pid
+    + double processorUsage
+    + double memoryPercent
+    + QString executable
+    + QString args
+    + QString StatusToStr() const
+    + static Status StrToStatus(QString)
+    + ProcessInfo(pid_t, Status, double, double, QString, QString)
+    + ProcessInfo(const ProcessInfo&)
+    + ProcessInfo()
+}
+
+enum ProcessInfo::Status {
+    Running, Sleeping, Waiting, Zombie, Stopped, Dead, Idle, Unknown
+}
+
+
+class NetworkInterfaceInfo {
+    + QString name
+    + Type type
+    + qint64 rxBytes
+    + qint64 txBytes
+    + QString typeAsStr() const
+    + NetworkInterfaceInfo(QString, Type, qint64, qint64)
+    + NetworkInterfaceInfo(const NetworkInterfaceInfo&)
+    + NetworkInterfaceInfo()
+}
+
+class RuntimeMetric {
+    + vector<double> coreLoads
+    + double overallCpuLoad() const
+    + double overallStorageLoad() const
+    + RuntimeMetric(vector<double>, MemoryInfo, vector<ProcessInfo>, vector<StorageInfo>, vector<NetworkInterfaceInfo>)
+    + RuntimeMetric()
+}
+
+enum Metric::Type {
+    SystemInfoRequest, RuntimeMetricRequest, Corrupt
+}
+
+class Metric {
+    + Type type
+    + ResponseData data
+    + metricid_t id
+    + bool valid() const
+    + shared_ptr<metrics::RuntimeMetric> asRuntimeMetric()
+    + shared_ptr<metrics::SystemInfo> asSysInfo()
+    + const ResponseData& viewData() const
+    + Type getType() const
+    + metricid_t getId() const
+    + Metric(shared_ptr<RuntimeMetric>, metricid_t)
+    + Metric(shared_ptr<SystemInfo>, metricid_t)
+    + Metric(void*, metricid_t)
+    + Metric(const Metric&)
+}
+
+SystemInfo *-- CpuInfo : +cpuInfo
+ProcessInfo *-- ProcessInfo::Status :  +status
+RuntimeMetric *-- MemoryInfo : +memory
+RuntimeMetric *-- "*" ProcessInfo : +processes
+RuntimeMetric *-- "*" StorageInfo : +storageInfo
+RuntimeMetric *-- "*" NetworkInterfaceInfo : +networkInfo
+Metric o-- RuntimeMetric
+Metric o-- SystemInfo
+Metric *-- Metric::Type : -type
+
+@enduml

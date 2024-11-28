@@ -1,0 +1,43 @@
+@startuml
+
+class ResourceMonitor {
+    + ResourceMonitor()
+    + unique_ptr<SystemInfo> gatherSysInfo()
+    + unique_ptr<RuntimeMetric> gatherRuntimeMetric()
+    - MemoryInfo gatherMemoryInfo() const
+    - vector<ProcessInfo> gatherProcessInfo() const
+    - ProcessInfo parsePSCommandRow(const QString&) const
+    - vector<StorageInfo> gatherStorageInfo() const
+    - unique_ptr<SystemInfo> sysInfoCache
+}
+
+class CpuMonitor {
+    + CpuMonitor()
+    + const CpuInfo& getInfo() const
+    + vector<double> gatherCoreLoads()
+    - CpuInfo gatherProcessorInfo()
+    - double calculateLoadForCore(const vector<unsigned int>&, unsigned int)
+    - CpuInfo info
+    - QVector<unsigned int> previousIdleTimes
+    - QVector<unsigned int> previousTotalTimes
+}
+
+class NetworkMonitor::LoadSnapShot {
+    + qint64 rx
+    + qint64 tx
+}
+
+class NetworkMonitor {
+    + NetworkMonitor()
+    + vector<NetworkInterfaceInfo> gatherInfo()
+    - NetworkInterfaceInfo gatherNetworkInterfaceLoad(const QNetworkInterface&)
+    - void updateCurrentLoads()
+    - QMap<QString, LoadSnapShot> currentLoads
+    - QMap<QString, LoadSnapShot> previousLoads
+}
+
+ResourceMonitor *-- CpuMonitor : "-cpuMonitor"
+ResourceMonitor *-- NetworkMonitor : "-networkMonitor"
+NetworkMonitor -- NetworkMonitor::LoadSnapShot
+
+@enduml

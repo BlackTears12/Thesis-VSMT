@@ -1,0 +1,57 @@
+@startuml
+
+class Application {
+    + int startExecution()
+    + QQmlApplicationEngine& getEngine()
+    + PageNavigator& getNavigator()
+    + ClientConfigListModel& getConfigModel()
+    + ClientStatusModel& getStatusModel()
+    + CpuRangeModel& getCpuRangeModel()
+    + MemoryRangeModel& getMemoryRangeModel()
+    + DiskRangeModel& getDiskRangeModel()
+    + ProcessTableModel& getProcessTable()
+    + ClientDescriptionModel& getClientDescriptor()
+    + CpuLoadDataModel& getCpuGraphModel()
+    + CoreLoadDataModelProvider& getCoreLoadProvider()
+    + StorageDataModel& getStorageDeviceModel()
+    + NetworkInterfaceModel& getNetworkInterfaceModel()
+    + const ClientConfiguration getClientConfig(client_id id)
+    + QFile getSavedConfigFile() const
+    ~ slot void onWindowCreationFailed()
+    + static void Init(int &argc, char** argv)
+    + static Application& Instance()
+    ~ static void registerMetatypes()
+    - QQmlApplicationEngine qmlEngine
+    - PageNavigator& navigator
+    - ClientConfigListModel& configModel
+    - ClientStatusModel& statusModel
+    - CpuRangeModel& cpuRangeModel
+    - MemoryRangeModel& memoryRangeModel
+    - DiskRangeModel& diskRangeModel
+    - ProcessTableModel& processTable
+    - ClientDescriptionModel& clientDescriptor
+    - CpuLoadDataModel& cpuLoadModel
+    - CoreLoadDataModelProvider& coreLoadProvider
+    - StorageDataModel& storageDeviceModel
+    - NetworkInterfaceModel& networkInterfaceModel
+    - Controller controller
+    - static unique_ptr<Application> instance
+}
+
+Application <|-- QApplication
+Application *-- QQmlApplicationEngine
+Application *-- PageNavigator
+Application *-- ClientConfigListModel
+Application *-- ClientStatusModel
+Application *-- CpuRangeModel
+Application *-- MemoryRangeModel
+Application *-- DiskRangeModel
+Application *-- ProcessTableModel
+Application *-- ClientDescriptionModel
+Application *-- CpuLoadDataModel
+Application *-- CoreLoadDataModelProvider
+Application *-- StorageDataModel
+Application *-- NetworkInterfaceModel
+Application *-- Controller
+
+@enduml

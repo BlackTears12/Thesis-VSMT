@@ -1,0 +1,64 @@
+@startuml
+
+enum Address::CID {
+    + Any = -1
+    + Hypervisor = 0
+    + Reserved = 1
+    + Host = 2
+}
+
+class Address {
+    + uint32_t cid
+    + uint32_t port
+    + Address(uint32_t cid, uint32_t port)
+}
+
+class VSockListener {
+    + VSockListener(QObject*)
+    + void setSocketDescriptor(unsigned int sock)
+    + void run() override
+    - unsigned int sock
+    ~ signal messageReceived(std::shared_ptr<Message>)
+    ~ signal socketDisconnected()
+}
+
+class VSocket {
+    + VSocket(QObject* parent = nullptr)
+    + ~VSocket()
+    + void connect(const Address&)
+    + void sendMessage(const Message&)
+    + void disconnect()
+    + static unique_ptr<VSocket> wrapSocket(qintptr socket)
+    ~ signal messageReceived(std::shared_ptr<Message>)
+    ~ signal disconnected()
+    - void finalize()
+    ~ slot onDisconnect()
+    - qintptr sock
+}
+
+class Message {
+    + Message(uint32_t)
+    + QDataStream& getDataStream()
+    + void send(qint64 sock) const
+    + bool isDisconnect()
+    + static uint32_t fromNetwork(uint32_t)
+    + static uint32_t toNetwork(uint32_t)
+    + static std::shared_ptr<Message> receive(qint64 sock)
+    + static const Message disconnectMessage
+    + static constexpr size_t MaxSize
+    + static constexpr size_t HeaderSize
+    - QBuffer buffer
+    - QByteArray byteArray
+    - QDataStream dataStream
+}
+
+
+QThread <|-- VSockListener
+QObject <|-- VSocket
+
+VSockListener -- Message
+VSocket *-- VSockListener : listener
+VSocket -- Message
+VSocket -- Address
+
+@enduml

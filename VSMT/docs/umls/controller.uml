@@ -1,0 +1,22 @@
+@startuml
+
+class Controller {
+    + Controller(QObject *parent = nullptr)
+    + void startExecution()
+    + slot void handleConnection(client_id)
+    + slot void handleConfigDelete(client_id)
+    + slot void handleDisconnectRequest(client_id)
+    + slot void setClientIntoContext(client_id)
+    + slot void onClientConnectionSuccess(ConnectionStatus, Connection)
+    + slot void onClientConnectionFailed(ConnectionStatus, client_id)
+    + slot void onConnectedClientTimedOut(client_id)
+    - void removeClient(client_id, ConnectionStatus)
+    - unique_ptr<ClientViewController>& getViewController(client_id)
+    - map<client_id, unique_ptr<ClientViewController>> clients
+}
+
+QObject <-- Controller
+Controller o-- "*" ClientViewController
+Controller *-- ClientConnector : "- connector"
+
+@enduml
