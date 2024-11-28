@@ -1,9 +1,0 @@
-/home/ext-szombatb/thesis/VSMT/src/VSMT_Hyp_Gateway/build/Desktop_Qt_6_8_0-D/CMakeFiles/VSMT_Hyp_Gateway.dir
-/home/ext-szombatb/thesis/VSMT/src/VSMT_Hyp_Gateway/build/Desktop_Qt_6_8_0-D/CMakeFiles/edit_cache.dir
-/home/ext-szombatb/thesis/VSMT/src/VSMT_Hyp_Gateway/build/Desktop_Qt_6_8_0-D/CMakeFiles/rebuild_cache.dir
-/home/ext-szombatb/thesis/VSMT/src/VSMT_Hyp_Gateway/build/Desktop_Qt_6_8_0-D/CMakeFiles/list_install_components.dir
-/home/ext-szombatb/thesis/VSMT/src/VSMT_Hyp_Gateway/build/Desktop_Qt_6_8_0-D/CMakeFiles/install.dir
-/home/ext-szombatb/thesis/VSMT/src/VSMT_Hyp_Gateway/build/Desktop_Qt_6_8_0-D/CMakeFiles/install/local.dir
-/home/ext-szombatb/thesis/VSMT/src/VSMT_Hyp_Gateway/build/Desktop_Qt_6_8_0-D/CMakeFiles/install/strip.dir
-/home/ext-szombatb/thesis/VSMT/src/VSMT_Hyp_Gateway/build/Desktop_Qt_6_8_0-D/CMakeFiles/VSMT_Hyp_Gateway_autogen_timestamp_deps.dir
-/home/ext-szombatb/thesis/VSMT/src/VSMT_Hyp_Gateway/build/Desktop_Qt_6_8_0-D/CMakeFiles/VSMT_Hyp_Gateway_autogen.dir
