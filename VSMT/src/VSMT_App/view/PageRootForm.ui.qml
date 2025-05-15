@@ -10,7 +10,7 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 import vsmt
 
-import "components/general"
+import vsmt
 
 Item {
     id: window

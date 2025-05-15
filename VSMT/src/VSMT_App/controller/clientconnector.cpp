@@ -40,7 +40,7 @@ void ClientConnector::resolveClients()
 void ClientConnector::onClientConnected(common::client_id id, shared_ptr<SystemInfo> sysInfo)
 {
     unresolvedClientsLock.lock();
-    auto disp = unresolvedClients[id];
+    auto disp = unresolvedClients.at(id);
     unresolvedClients.erase(id);
     unresolvedClientsLock.unlock();
     emit clientConnected(ConnectionStatus(),{
@@ -51,9 +51,13 @@ void ClientConnector::onClientConnected(common::client_id id, shared_ptr<SystemI
 
 void ClientConnector::addConnectingDispatcher(const shared_ptr<ClientDispatcher> disp)
 {
-    QObject::connect(disp.get(),&ClientDispatcher::clientConnected,this,[this,&disp](shared_ptr<SystemInfo> sysInfo){
-        this->onClientConnected(disp->getId(),sysInfo);
-    });
+    auto id = disp->getId();
+    QObject::connect(disp.get(),
+                     &ClientDispatcher::clientConnected,
+                     this,
+                     [this, id](shared_ptr<SystemInfo> sysInfo) {
+                         this->onClientConnected(id, sysInfo);
+                     });
     unresolvedClientsLock.lock();
     unresolvedClients.emplace(disp->getId(),disp);
     clientResolveTimer.start();

@@ -136,9 +136,7 @@ qt_add_qml_module(VSMT
 
         view/AppWindow.qml
         view/PageRoot.qml
-        view/PageRootForm.ui.qml
-        view/pages/MainPage.qml
-        view/pages/MainPageForm.ui.qml
+        view/PageRootForm.ui.qml        
         view/pages/ClientOverviewPageForm.ui.qml
         view/pages/ClientOverviewPage.qml
         view/pages/ClientCpuPage.qml
@@ -177,6 +175,8 @@ qt_add_qml_module(VSMT
         view/components/gauges/CircularTickmarkLabel.qml
         view/components/gauges/GaugeStyle.qml
         view/components/Utils.js
+        view/pages/MainPage.qml
+        view/pages/MainPageForm.ui.qml
     RESOURCES
         qmldir
     URI vsmt
